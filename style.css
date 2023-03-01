@@ -1,0 +1,35 @@
+#container {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(4, 25%);
+    background-color: cornflowerblue;
+    width: 400px;
+    height: 400px;
+}
+.calcButton {
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkgrey;
+    border: solid
+}
+button {
+    background-color: darkgrey;
+    font-size: 36px;
+    border: hidden;
+}
+#equalsContainer {
+    background-color: darkgrey;
+    width: 394px;
+    border: solid;
+    text-align: center;
+}
+#numberDisplay {
+    background-color: antiquewhite;
+    width: 394px;
+    height: 50px;
+    font-size: 36px;
+    border: solid;
+    text-align: center;
+}
