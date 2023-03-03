@@ -98,12 +98,23 @@ function assignOperator(num)
 }
 const numButtons = document.querySelectorAll(".numButton");
 const equalsButton = document.querySelector("#equalsButton");
+const operatorButtons = document.querySelectorAll(".operatorButton");
+const clearButton = document.querySelector(".clearButton");
 numButtons.forEach((nButton) => {
     nButton.addEventListener("click", () => {
         showNumber(nButton.textContent)
     });
 });
-equalsButton.addEventListener("click", ( ) => equals(storedOperator, storedNum, storedNum2));
+operatorButtons.forEach((opButton) => {
+    opButton.addEventListener("click", () => operatorClick(opButton.textContent));
+});
+equalsButton.addEventListener("click", () => equals(storedOperator, storedNum, storedNum2));
+clearButton.addEventListener("click", () => {
+    screen.textContent = ""
+    storedOperator = "";
+    storedNum = undefined;
+    storedNum2 = undefined;
+});
 let screen = document.querySelector("#numberDisplay");
 let storedNum;
 let storedNum2;
@@ -115,6 +126,7 @@ function showNumber(num)
         let currentContent2 = screen.textContent;
         currentContent2 += num;
         screen.textContent = currentContent2;
+        storedNum2 = Number(currentContent2);
     }
     else if(screen.textContent.length < 9)
     {
@@ -139,20 +151,23 @@ function equals(op, num1, num2)
         {
             case "+":
                 screen.textContent = add(num1, num2).toString();
+                storedNum = add(num1, num2);
                 break;
             case "-":
                 screen.textContent = subtract(num1, num2).toString();
+                storedNum = subtract(num1, num2);
                 break;
             case "*":
                 screen.textContent = multiply(num1, num2).toString();
+                storedNum = multiply(num1, num2);
                 break;
             case "/":
                 screen.textContent = divide(num1, num2).toString();
+                storedNum = divide(num1, num2);
                 break;
         }
     }
     storedOperator = "";
-    storedNum = undefined;
     storedNum2 = undefined;
     return;
 }
