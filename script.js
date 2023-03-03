@@ -38,20 +38,18 @@ const container = document.querySelector("#container");
 for(let i = 1; i < 17; i++)
 {
     const newDiv = document.createElement("div");
-    const newButton = document.createElement("button");
-    newDiv.appendChild(newButton);
     newDiv.classList.add("calcButton");
     container.appendChild(newDiv);
     if(!(nonNumSpots(i)) && counter < 10)
     {
-        newButton.textContent = counter.toString();
-        newButton.classList.add("numButton");
+        newDiv.textContent = counter.toString();
+        newDiv.classList.add("numButton");
         counter += 1;
     }
     else if(nonNumSpots(i))
     {
-        newButton.textContent = assignOperator(i);
-        newButton.classList.add("otherButton");
+        newDiv.textContent = assignOperator(i);
+        newDiv.classList.add("otherButton");
     }
 }
 

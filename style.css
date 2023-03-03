@@ -24,18 +24,15 @@ body {
     justify-content: center;
     align-items: center;
     background-color: darkgrey;
-    border: solid
-}
-button {
-    background-color: darkgrey;
+    border: solid;
     font-size: 36px;
-    border: hidden;
 }
-#equalsContainer {
+#equalsButton {
     background-color: darkgrey;
     width: 394px;
     border: solid;
     text-align: center;
+    font-size: 36px;
 }
 #numberDisplay {
     background-color: antiquewhite;
