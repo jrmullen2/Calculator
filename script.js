@@ -51,6 +51,19 @@ for(let i = 1; i < 17; i++)
         newDiv.textContent = assignOperator(i);
         newDiv.classList.add("otherButton");
     }
+    if(i % 4 === 0)
+    {
+        newDiv.classList.add("operatorButton");
+    }
+    if(i === 14 || i === 15)
+    {
+        newDiv.classList.add("numButton");
+    }
+    if(i === 13)
+    {
+        newDiv.classList.add("clearButton");
+    }
+
 }
 
 //Determines if the current button should display a number 1-9 or not
@@ -83,22 +96,63 @@ function assignOperator(num)
             return "÷";
     }
 }
-let storedNum = 0;
 const numButtons = document.querySelectorAll(".numButton");
+const equalsButton = document.querySelector("#equalsButton");
 numButtons.forEach((nButton) => {
     nButton.addEventListener("click", () => {
         showNumber(nButton.textContent)
     });
 });
+equalsButton.addEventListener("click", ( ) => equals(storedOperator, storedNum, storedNum2));
 let screen = document.querySelector("#numberDisplay");
+let storedNum;
+let storedNum2;
+let storedOperator = "";
 function showNumber(num)
 {
-    if(screen.textContent.length < 9)
+    if(storedOperator && screen.textContent.length < 9)
+    {
+        let currentContent2 = screen.textContent;
+        currentContent2 += num;
+        screen.textContent = currentContent2;
+    }
+    else if(screen.textContent.length < 9)
     {
         let currentContent = screen.textContent;
         currentContent += num;
         screen.textContent = currentContent;
+        storedNum = Number(currentContent);
     }
+    
     return;
-   
+}
+function operatorClick(operator)
+{
+    screen.textContent = "";
+    storedOperator = operator;
+}
+function equals(op, num1, num2)
+{
+    if(op && num1 && num2)
+    {
+        switch(op)
+        {
+            case "+":
+                screen.textContent = add(num1, num2).toString();
+                break;
+            case "-":
+                screen.textContent = subtract(num1, num2).toString();
+                break;
+            case "*":
+                screen.textContent = multiply(num1, num2).toString();
+                break;
+            case "/":
+                screen.textContent = divide(num1, num2).toString();
+                break;
+        }
+    }
+    storedOperator = "";
+    storedNum = undefined;
+    storedNum2 = undefined;
+    return;
 }
