@@ -1,37 +1,19 @@
-function add(...args)
+function add(num1, num2)
 {
-    return args.reduce((sum, currentValue) => sum += currentValue);
+    return (Math.round(((num1 + num2) * 10000)) / 10000);
 }
 
-function subtract(...args)
+function subtract(num1, num2)
 {
-    return args.reduce((difference, currentValue) => difference -= currentValue);
+    return (Math.round(((num1 - num2) * 10000)) / 10000);
 }
-function multiply(...args)
+function multiply(num1, num2)
 {
-    return args.reduce((product, currentValue) => product *= currentValue);
+    return (Math.round(((num1 * num2) * 10000)) / 10000);
 }
-function divide(...args)
+function divide(num1, num2)
 {
-    return args.reduce((quotient, currentValue) => quotient /= currentValue);
-}
-function operate(op, num1, num2)
-{
-    switch(op)
-    {
-        case "+":
-            add(num1, num2)
-            break;
-        case "-":
-            subtract(num1, num2)
-            break;
-        case "*":
-            multiply(num1, num2)
-            break;
-        case "/":
-            divide(num1, num2)
-            break;
-    }
+    return (Math.round(((num1 / num2) * 10000)) / 10000);
 }
 let counter = 1;
 const container = document.querySelector("#container");
@@ -102,7 +84,14 @@ const operatorButtons = document.querySelectorAll(".operatorButton");
 const clearButton = document.querySelector(".clearButton");
 numButtons.forEach((nButton) => {
     nButton.addEventListener("click", () => {
-        showNumber(nButton.textContent)
+        if(nButton.textContent === "." && screen.textContent.includes("."))
+        {
+            alert("There is already a decimal.");
+        }
+        else
+        {
+            showNumber(nButton.textContent);
+        } 
     });
 });
 operatorButtons.forEach((opButton) => {
@@ -145,7 +134,7 @@ function operatorClick(operator)
 }
 function equals(op, num1, num2)
 {
-    if(op && num1 && num2)
+    if(op && num1 && num2 != undefined)
     {
         switch(op)
         {
@@ -161,7 +150,12 @@ function equals(op, num1, num2)
                 screen.textContent = multiply(num1, num2).toString();
                 storedNum = multiply(num1, num2);
                 break;
-            case "/":
+            case "÷":
+                if(num2 === 0)
+                {
+                    alert("This value is not allowed, try again.");
+                    break;
+                }
                 screen.textContent = divide(num1, num2).toString();
                 storedNum = divide(num1, num2);
                 break;
