@@ -79,9 +79,10 @@ function assignOperator(num)
     }
 }
 const numButtons = document.querySelectorAll(".numButton");
-const equalsButton = document.querySelector("#equalsButton");
+const equalsButton = document.querySelector(".equalsButton");
 const operatorButtons = document.querySelectorAll(".operatorButton");
 const clearButton = document.querySelector(".clearButton");
+const deleteButton = document.querySelector(".deleteButton");
 numButtons.forEach((nButton) => {
     nButton.addEventListener("click", () => {
         if(nButton.textContent === "." && screen.textContent.includes("."))
@@ -103,6 +104,43 @@ clearButton.addEventListener("click", () => {
     storedOperator = "";
     storedNum = undefined;
     storedNum2 = undefined;
+});
+deleteButton.addEventListener("click", () => {
+    let newNumber = screen.textContent.slice(0, screen.textContent.length - 1);
+    screen.textContent = newNumber;
+});
+window.addEventListener("keydown", (e) => {
+    if(parseInt(e.key) >= 0 && parseInt(e.key) < 10 || e.key === ".")
+    {
+        if(e.key === "." && screen.textContent.includes("."))
+        {
+            alert("There is already a decimal.");
+        }
+        else
+        {
+            showNumber(e.key);
+        }
+    }
+    else if(e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/")
+    {
+        if(e.key === "/")
+        {
+            operatorClick("÷")
+        }
+        else
+        {
+            operatorClick(e.key);
+        }
+    }
+    else if(e.key === "=" || e.key === "Enter")
+    {
+        equals(storedOperator, storedNum, storedNum2); 
+    }
+    else if(e.key === "Backspace")
+    {
+        let newNumber = screen.textContent.slice(0, screen.textContent.length - 1);
+        screen.textContent = newNumber;
+    }
 });
 let screen = document.querySelector("#numberDisplay");
 let storedNum;
@@ -129,8 +167,16 @@ function showNumber(num)
 }
 function operatorClick(operator)
 {
-    screen.textContent = "";
-    storedOperator = operator;
+    if(!storedOperator)
+    {
+        screen.textContent = "";
+        storedOperator = operator;
+    }
+    else
+    {
+        alert("You have already selected an operator. Click clear to start again.");
+    }
+    
 }
 function equals(op, num1, num2)
 {
