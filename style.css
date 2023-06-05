@@ -1,70 +1,85 @@
-
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(images/joanna-kosinska-1_CMoFsPfso-unsplash.jpg);
+  background-size: cover;
+  width: 90vw;
+  height: 100vh;
+  gap: 10%;
+}
+#caption {
+  font-size: 36px;
+  font-weight: 700;
+  color: palevioletred;
+  text-align: center;
+}
+#subCaption {
+  font-size: 24px;
+  font-weight: 700;
+  color: darkred;
 }
 #holder {
-    display: flex;
-    flex-direction: column;
-    background-color: cornflowerblue;
-    width: 400px;
-    height: 400px;
-    padding: 20px;
-    justify-content: stretch;
-    gap: 40px;
+  display: flex;
+  flex-direction: column;
+  background-color: cornflowerblue;
+  max-width: 400px;
+  max-height: 400px;
+  padding: 20px;
+  justify-content: stretch;
+  gap: 40px;
 }
 #container {
-    display: grid;
-    grid-template-columns: repeat(4, 25%);
-    grid-template-rows: repeat(4, 25%);
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(4, 25%);
 }
 .calcButton {
-    padding: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: darkgrey;
-    border: solid;
-    font-size: 36px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgrey;
+  border: solid;
+  font-size: 36px;
 }
 #lastButtons {
-    width: 397px;
-    border: solid;
-    text-align: center;
-    font-size: 36px;
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    
+  width: 100%;
+  border: none;
+  text-align: center;
+  font-size: 36px;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
 }
-.equalsButton {
-    background-color: darkgrey;
-    border:solid;
-    
+#equalsButton {
+  background-color: darkgrey;
+  border: solid;
 }
-.deleteButton {
-    background-color: darkgrey; 
-    border: solid; 
+#deleteButton {
+  background-color: darkgrey;
+  border: solid;
 }
 #numberDisplay {
-    display: flex;
-    background-color: antiquewhite;
-    width: 397px;
-    height: 125px;
-    font-size: 36px;
-    border: solid;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  background-color: antiquewhite;
+  width: 397px;
+  height: 125px;
+  font-size: 36px;
+  border: solid;
+  justify-content: center;
+  align-items: center;
 }
-.operatorButton
-{
-    color:black;
-    background-color:mediumspringgreen;
+.operatorButton {
+  color: black;
+  background-color: mediumspringgreen;
 }
-.numButton, .clearButton {
-    color:black;
-    background-color: violet;
+.numButton,
+.clearButton {
+  color: black;
+  background-color: violet;
 }
-.equalsButton, .deleteButton {
-    background-color: darksalmon;
+.equalsButton,
+.deleteButton {
+  background-color: darksalmon;
 }
